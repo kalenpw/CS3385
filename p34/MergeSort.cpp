@@ -11,19 +11,20 @@ void merge(int* array, int p, int q, int r){
     int* right = new int[lengthTwo + 1];
 
     for(int i = 0; i < lengthOne; i++){
-        left[i] = array[p + i - 1];
+        left[i] = array[p + i];
     }
     for(int j = 0; j < lengthTwo; j++){
-        right[j] = array[q + j];
+        right[j] = array[q + j + 1];
     }
 
-    left[lengthOne + 1] = 10000000;
-    right[lengthTwo + 1] = 10000000;
+    left[lengthOne + 1] = 100;
+    right[lengthTwo + 1] = 100;
 
     int ii = 0;
     int jj = 0;
 
     for(int k = p; k < r; k++){
+        cout << "k = " << k << std::endl;
         if(left[ii] <= right[jj]){
             array[k] = left[ii];
             ii = ii + 1;
@@ -33,7 +34,7 @@ void merge(int* array, int p, int q, int r){
         }
     }
 
-    //cout << "merge";
+    //cout << "FUCK";
 }
 
 void mergeSortImpl(int* array, int p, int r){
