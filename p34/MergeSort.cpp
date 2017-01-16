@@ -9,6 +9,9 @@ void merge(int* array, int p, int q, int r){
     
     int* left = new int[lengthOne + 1];
     int* right = new int[lengthTwo + 1];
+    
+    int i = 0;
+    int j = 0;
 
     for(int i = 0; i < lengthOne; i++){
         left[i] = array[p + i];
@@ -18,23 +21,27 @@ void merge(int* array, int p, int q, int r){
     }
 
     left[lengthOne + 1] = 100;
-    right[lengthTwo + 1] = 100;
+    right[lengthTwo + 1] = 100;    
 
-    int ii = 0;
-    int jj = 0;
+    i = 0;
+    j = 0;
 
-    for(int k = p; k < r; k++){
+    for(int k = p; k <= r; k++){
         cout << "k = " << k << std::endl;
-        if(left[ii] <= right[jj]){
-            array[k] = left[ii];
-            ii = ii + 1;
+        if(left[i] <= right[j]){
+            array[k] = left[i];
+            i = i + 1;
         }
-        else if(array[k] = right[jj]){
-            jj = jj + 1;
+//        else if(array[k] == right[j]){
+//            j = j + 1;
+//        }
+        else{
+            array[k] = right[j];
+            j = j + 1;
         }
     }
 
-    //cout << "FUCK";
+//    cout << "merge" << endl;
 }
 
 void mergeSortImpl(int* array, int p, int r){
