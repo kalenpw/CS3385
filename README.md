@@ -1,8 +1,8 @@
 # CS3385
 Projects for CS3385
 
-*p18-Insertion sort
-
-*p34-Merge sort
-
-*p72-Max sub array
+<ul>
+<li>p18-Insertion sort</li>
+<li>p34-Merge sort</li>
+<li>p72-Max sub array</li>
+</ul>
