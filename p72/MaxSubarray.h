@@ -9,6 +9,7 @@
 // and INT_MAX to be infinity
 #include <climits>
 
+
 // This is the struct you will return from your functions.
 struct Result {
   // Constructor
@@ -32,3 +33,5 @@ struct Result {
   int left, right, sum;
 };
 
+Result findMaxCrossingSubarray(int* array, int low, int mid, int high);
+Result findMaxSubarray(int* array, int low, int high);
