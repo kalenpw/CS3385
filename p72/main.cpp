@@ -41,6 +41,7 @@ int runTests() {
      Result r = findMaxCrossingSubarray(A, 0, 2, 5);
      Result c(2, 4, 15);
      TEST(r == c);
+
    }
 
    {
