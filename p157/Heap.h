@@ -25,7 +25,7 @@ class Heap {
   ~Heap();
 
   // Accesses an element of the array.
-  int at(int i);
+  int at(int i) const;
 
   // Allows comparison between results
   bool operator==(const Heap& rhs);
@@ -47,4 +47,7 @@ class Heap {
   int n;
 };
 
-
+// Useful for debugging. To use:
+//   Heap h;
+//   cout << h << endl;
+std::string toDot(const Heap& h);

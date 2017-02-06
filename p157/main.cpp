@@ -5,8 +5,42 @@
 //
 // In this project you will be implementing a heap.
 //
+// The project distribution has compile errors. You need to
+// implement left(), right(), hasLeft() and hasRight().
 // The at() function is included to give you an idea of the
 // syntax for adding your functions to the class.
+//
+// Note that at() is a const function. All member functions
+// of a class should be const *except* for those that modify
+// data members in your class.
+//
+// See https://youtu.be/By0asyBD-k0 for video instructions
+// on using the toDot() utility for debugging.
+//
+// toDot() utility: if you want to see what your heap looks
+// like graphically, you can use the toDot() function. At any
+// time, you can call
+//
+//   cout << toDot(h) << endl;
+//   // If you're calling from within a member function of
+//   // the Heap class:
+//   cout << toDot(*this) << endl;
+//
+// After you run the project, you'll see output something like
+// this:
+//
+//     digraph G {
+//     graph [ordering="out"]
+//     "16"
+//     "3" -> "1"
+//     "16" -> "3"
+//     "16" -> "2"
+//     }
+//
+// Copy this output into the text box on www.webgraphviz.com,
+// click the "Generate Graph!" button and you will see a
+// visual representation of your graph. This is a tool we
+// will use throughout the course.
 //
 // Files to submit:
 //   * Heap.h
@@ -15,6 +49,7 @@
 //------------------------------------------------------------
 
 #include <iostream>
+#include <sstream>
 
 #include "./Heap.h"
 
@@ -117,7 +152,9 @@ int runTests() {
   // {
   //   int A[] = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
   //   Heap h(A, 10, 10);
+  //   cout << toDot(h) << endl;
   //   h.buildMaxHeap();
+  //   cout << toDot(h) << endl;
   //   int target[] = { 16, 14, 10, 8, 7, 9, 3, 2, 4, 1 };
   //   TEST(h == target);
   // }
@@ -131,3 +168,4 @@ int runTests() {
 int main() {
   return runTests();
 }
+

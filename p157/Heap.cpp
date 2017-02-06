@@ -1,5 +1,6 @@
 #include "./Heap.h"
 #include <iostream>
+#include <sstream>
 // Provides floor, ceil, etc.
 #include <cmath>
 
@@ -29,7 +30,7 @@ Heap::~Heap() {
 // Note: the function name is prefixed by Heap:: (the class
 // name followed by two colons). Any function defined in
 // the .cpp file must have this prefix.
-int Heap::at(int i) {
+int Heap::at(int i) const {
   return A[i];
 }
 
@@ -58,4 +59,31 @@ std::ostream& operator<<(std::ostream& out, const Heap& h) {
   }
   out << "]";
   return out;
+}
+
+string toDotImpl(const Heap& h, int i) {
+  using namespace std;
+  stringstream ss;
+  if (h.hasLeft(i)) {
+    ss << toDotImpl(h, h.left(i));
+    ss << "\"" << h.at(i) << "\" -> \""
+       << h.at(h.left(i)) << "\"\n";
+  }
+  if (h.hasRight(i)) {
+    ss << toDotImpl(h, h.right(i));
+    ss << "\"" << h.at(i) << "\" -> \""
+       << h.at(h.right(i)) << "\"\n";
+  }
+  return ss.str();
+}
+
+string toDot(const Heap& h) {
+  using namespace std;
+  stringstream ss;
+  ss << "digraph G {\n";
+  ss << "graph [ordering=\"out\"]\n";
+  ss << "\"" << h.at(0) << "\"\n";
+  ss << toDotImpl(h, 0);
+  ss << "}\n";
+  return ss.str();
 }
