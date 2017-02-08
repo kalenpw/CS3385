@@ -25,7 +25,29 @@ class Heap {
   ~Heap();
 
   // Accesses an element of the array.
-  int at(int i) const;
+  int at(int i) const; 
+  
+  // Gets parent index of element at i
+  int parent(int i) const;
+
+  // Return element to the  left of i
+  int left(int i) const;
+
+  // Return element to the right of i
+  int right(int i) const;
+
+  // Checks if an element has a left child
+  bool hasLeft(int i) const;
+
+  // Checks if an elemnt has a right child
+  bool hasRight(int i) const;
+
+  // "Max heapifies" an array
+  void maxHeapify(int i);
+
+  // builds a max heap
+  void buildMaxHeap();
+  
 
   // Allows comparison between results
   bool operator==(const Heap& rhs);

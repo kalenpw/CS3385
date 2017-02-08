@@ -1,3 +1,8 @@
+//Kalen Williams
+//CS 3385
+//08 Feb. 2017
+//Heap.cpp
+
 #include "./Heap.h"
 #include <iostream>
 #include <sstream>
@@ -20,6 +25,13 @@ Heap::Heap(int* inArray, int inArraySize, int inHeapSize) {
   // A = new int[size];
   // If you allocate an array like this you MUST deallocate it in your
   // destructor. This is done for you in the destructor below.
+
+  arraySize = inArraySize;
+  n = inHeapSize;
+  A = new int[arraySize];
+  for(int i = 0; i < inHeapSize; i++){
+    A[i] = inArray[i];
+  }
 }
 
 // Destructor. Cleans up memory.
@@ -33,6 +45,68 @@ Heap::~Heap() {
 int Heap::at(int i) const {
   return A[i];
 }
+
+int Heap::parent(int i) const{
+    return (int) (i - 1) / 2;
+}
+
+int Heap::left(int i) const {
+    return (i + 1)* 2 - 1;
+}
+
+int Heap::right(int i) const {
+    return  (i + 1) * 2;
+}
+
+bool Heap::hasLeft(int i) const {
+    int leftIndex = left(i);
+    if(leftIndex > n){
+        return false;
+    }
+    return true;
+}
+
+bool Heap::hasRight(int i) const{
+    int rightIndex = right(i);
+    if(rightIndex > n){
+        return false;
+    }
+    return true;
+}
+
+void Heap::maxHeapify(int i){
+    int leftIndex = left(i);
+    int rightIndex = right(i);
+    int largest = 0;
+    
+    if(leftIndex <= n && A[leftIndex] > A[i]){
+        largest = leftIndex;
+    }
+    else{
+        largest = i;
+    }
+
+    if(rightIndex <= n && A[rightIndex] > A[largest]){
+        largest = rightIndex;
+    }
+
+    if(largest !=  i){
+        int swap;
+        swap = A[largest];
+        A[largest] = A[i];
+        A[i] = swap;
+        maxHeapify(largest); 
+    }
+   
+}
+
+void Heap::buildMaxHeap(){
+    for(int i = n; i >= 0; i--){
+        maxHeapify(i);
+    }
+}
+
+
 
 bool Heap::operator==(const Heap& rhs) {
   if (n != rhs.n) return false;
