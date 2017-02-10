@@ -60,6 +60,7 @@ int Heap::right(int i) const {
 
 bool Heap::hasLeft(int i) const {
     int leftIndex = left(i);
+    leftIndex += 1;
     if(leftIndex > n){
         return false;
     }
@@ -68,6 +69,7 @@ bool Heap::hasLeft(int i) const {
 
 bool Heap::hasRight(int i) const{
     int rightIndex = right(i);
+    rightIndex += 1;
     if(rightIndex > n){
         return false;
     }
