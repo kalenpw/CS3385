@@ -78,41 +78,41 @@ int runTests() {
   int numFails = 0;
   int testNum = 0;
 
-  // {
-  //   Patient A[] = { 
-  //     Patient("George McClellan", 1),
-  //     Patient("George Mead", 2),
-  //     Patient("Robert E. Lee", 3),
-  //   };
-  //   Heap h(A, 3, 3);
-  //   TEST(h == A);
-  //   TEST(h.at(0).name() == "George McClellan");
-  //   TEST(h.at(2).name() == "Robert E. Lee");
-  //   TEST(h.left(0) == 1);
-  //   TEST(h.parent(1) == 0);
-  // }
+   {
+    Patient A[] = { 
+       Patient("George McClellan", 1),
+       Patient("George Mead", 2),
+       Patient("Robert E. Lee", 3),
+     };
+     Heap h(A, 3, 3);
+     TEST(h == A);
+     TEST(h.at(0).name() == "George McClellan");
+     TEST(h.at(2).name() == "Robert E. Lee");
+     TEST(h.left(0) == 1);
+     TEST(h.parent(1) == 0);
+   }
 
-  // {
-  //   Patient A[] = { 
-  //     Patient("George McClellan", 1),
-  //     Patient("George Mead", 2),
-  //     Patient("Robert E. Lee", 3),
-  //   };
-  //   Heap h(A, 3, 3);
-  //   h.maxHeapify(0);
-  //   Patient target[] = { 
-  //     Patient("Robert E. Lee", 3),
-  //     Patient("George Mead", 2),
-  //     Patient("George McClellan", 1),
-  //   };
-  //   TEST(arrayEquals(h, target, 3));
-  //   h.maxHeapify(0);
-  //   TEST(arrayEquals(h, target, 3));
-  //   h.maxHeapify(1);
-  //   TEST(arrayEquals(h, target, 3));
-  //   h.maxHeapify(2);
-  //   TEST(arrayEquals(h, target, 3));
-  // }
+   {
+     Patient A[] = { 
+       Patient("George McClellan", 1),
+       Patient("George Mead", 2),
+       Patient("Robert E. Lee", 3),
+     };
+     Heap h(A, 3, 3);
+     h.maxHeapify(0);
+     Patient target[] = { 
+       Patient("Robert E. Lee", 3),
+       Patient("George Mead", 2),
+       Patient("George McClellan", 1),
+     };
+     TEST(arrayEquals(h, target, 3));
+     h.maxHeapify(0);
+     TEST(arrayEquals(h, target, 3));
+     h.maxHeapify(1);
+     TEST(arrayEquals(h, target, 3));
+     h.maxHeapify(2);
+     TEST(arrayEquals(h, target, 3));
+   }
 
   // {
   //   Patient A[] = { 

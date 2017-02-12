@@ -1,5 +1,3 @@
-#pragma once
-
 // Provides I/O
 #include <iostream>
 // Provides size_t
@@ -29,13 +27,13 @@ class Heap {
   // Accesses an element of the array.
   Patient at(int i) const;  
   // Gets parent index of element at i
-  Patient parent(int i) const;
+  int parent(int i) const;
 
   // Return element to the  left of i
-  Patient left(int i) const;
+  int left(int i) const;
 
   // Return element to the right of i
-  Patient right(int i) const;
+  int right(int i) const;
 
   // Checks if an element has a left child
   bool hasLeft(int i) const;
@@ -52,7 +50,7 @@ class Heap {
 
   // Allows comparison between results
   bool operator==(const Heap& rhs);
-  bool operator==(const int* rhs);
+  bool operator==(const Patient* rhs);
 
   // Useful for debugging. To use:
   //   Heap h;
