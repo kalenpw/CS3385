@@ -47,6 +47,18 @@ class Heap {
   // builds a max heap
   void buildMaxHeap();
   
+  // Get the max value and remove it 
+  Patient extractMax();
+  
+  // Insert a value into the max heap
+  void insert(Patient value);
+  
+  // Get the max value of a heap
+  Patient max();
+
+  void heapsort();
+
+  void swap(int a, int b);
 
   // Allows comparison between results
   bool operator==(const Heap& rhs);
@@ -66,6 +78,7 @@ class Heap {
 
   // The number of elements in the heap
   int n;
+
 };
 
 // Useful for debugging. To use:
