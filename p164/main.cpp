@@ -114,100 +114,100 @@ int runTests() {
      TEST(arrayEquals(h, target, 3));
    }
 
-  // {
-  //   Patient A[] = { 
-  //     Patient("George McClellan", 4),
-  //     Patient("George Mead", 1),
-  //     Patient("Robert E. Lee", 3),
-  //     Patient("John Pope", 2),
-  //     Patient("Stonewall Jackson", 16),
-  //     Patient("J.E.B. Stuart", 9),
-  //     Patient("James Longstreet", 10),
-  //     Patient("Ulysses S. Grant", 14),
-  //     Patient("Robert Anderson", 8),
-  //     Patient("George Custer", 7),
-  //   };
-  //   Heap h(A, 10, 10);
-  //   h.buildMaxHeap();
-  //   Patient target[] = { 
-  //     Patient("Stonewall Jackson", 16),
-  //     Patient("Ulysses S. Grant", 14),
-  //     Patient("James Longstreet", 10),
-  //     Patient("Robert Anderson", 8),
-  //     Patient("George Custer", 7),
-  //     Patient("J.E.B. Stuart", 9),
-  //     Patient("Robert E. Lee", 3),
-  //     Patient("John Pope", 2),
-  //     Patient("George McClellan", 4),
-  //     Patient("George Mead", 1),
-  //   };
-  //   TEST(arrayEquals(h, target, 10));
-  // }
+   {
+     Patient A[] = { 
+       Patient("George McClellan", 4),
+       Patient("George Mead", 1),
+       Patient("Robert E. Lee", 3),
+       Patient("John Pope", 2),
+       Patient("Stonewall Jackson", 16),
+       Patient("J.E.B. Stuart", 9),
+       Patient("James Longstreet", 10),
+       Patient("Ulysses S. Grant", 14),
+       Patient("Robert Anderson", 8),
+       Patient("George Custer", 7),
+     };
+     Heap h(A, 10, 10);
+     h.buildMaxHeap();
+     Patient target[] = { 
+       Patient("Stonewall Jackson", 16),
+       Patient("Ulysses S. Grant", 14),
+       Patient("James Longstreet", 10),
+       Patient("Robert Anderson", 8),
+       Patient("George Custer", 7),
+       Patient("J.E.B. Stuart", 9),
+       Patient("Robert E. Lee", 3),
+       Patient("John Pope", 2),
+       Patient("George McClellan", 4),
+       Patient("George Mead", 1),
+     };
+     TEST(arrayEquals(h, target, 10));
+   }
 
-  // {
-  //   Patient A[] = { 
-  //     Patient("George McClellan", 4),
-  //     Patient("George Mead", 1),
-  //     Patient("Robert E. Lee", 3),
-  //     Patient("John Pope", 2),
-  //     Patient("Stonewall Jackson", 16),
-  //     Patient("J.E.B. Stuart", 9),
-  //     Patient("James Longstreet", 10),
-  //     Patient("Ulysses S. Grant", 14),
-  //     Patient("Robert Anderson", 8),
-  //     Patient("George Custer", 7),
-  //   };
-  //   Heap h(A, 10, 10);
-  //   h.heapsort();
-  //   Patient target[] = { 
-  //     Patient("George Mead", 1),
-  //     Patient("John Pope", 2),
-  //     Patient("Robert E. Lee", 3),
-  //     Patient("George McClellan", 4),
-  //     Patient("George Custer", 7),
-  //     Patient("Robert Anderson", 8),
-  //     Patient("J.E.B. Stuart", 9),
-  //     Patient("James Longstreet", 10),
-  //     Patient("Ulysses S. Grant", 14),
-  //     Patient("Stonewall Jackson", 16),
-  //   };
-  //   TEST(arrayEquals(h, target, 10));
-  // }
+   {
+     Patient A[] = { 
+       Patient("George McClellan", 4),
+       Patient("George Mead", 1),
+       Patient("Robert E. Lee", 3),
+       Patient("John Pope", 2),
+       Patient("Stonewall Jackson", 16),
+       Patient("J.E.B. Stuart", 9),
+       Patient("James Longstreet", 10),
+       Patient("Ulysses S. Grant", 14),
+       Patient("Robert Anderson", 8),
+       Patient("George Custer", 7),
+     };
+     Heap h(A, 10, 10);
+     h.heapsort();
+     Patient target[] = { 
+       Patient("George Mead", 1),
+       Patient("John Pope", 2),
+       Patient("Robert E. Lee", 3),
+       Patient("George McClellan", 4),
+       Patient("George Custer", 7),
+       Patient("Robert Anderson", 8),
+       Patient("J.E.B. Stuart", 9),
+       Patient("James Longstreet", 10),
+       Patient("Ulysses S. Grant", 14),
+       Patient("Stonewall Jackson", 16),
+     };
+     TEST(arrayEquals(h, target, 10));
+   }
 
-  // {
-  //   Patient A[] = { 
-  //     Patient("George Mead", 1),
-  //     Patient("George McClellan", 4),
-  //     Patient(),
-  //     Patient(),
-  //     Patient(),
-  //     Patient(),
-  //     Patient(),
-  //   };
-  //   Heap h(A, 7, 2);
-  //   h.buildMaxHeap();
-  //   Patient next = h.extractMax();
-  //   TEST(next.name() == "George McClellan");
-  //   TEST(h.max().name() == "George Mead");
-
-  //   h.insert(Patient("Robert E. Lee", 3));
-  //   TEST(h.max().name() == "Robert E. Lee");
-
-  //   h.insert(Patient("John Pope", 2));
-  //   TEST(h.max().name() == "Robert E. Lee");
-
-  //   h.insert(Patient("Stonewall Jackson", 16));
-  //   TEST(h.max().name() == "Stonewall Jackson");
-
-  //   next = h.extractMax();
-  //   TEST(next.name() == "Stonewall Jackson");
-
-  //   next = h.extractMax();
-  //   TEST(next.name() == "Robert E. Lee");
-
-  //   next = h.extractMax();
-  //   TEST(next.name() == "John Pope");
-  // }
+//   {
+//     Patient A[] = { 
+//       Patient("George Mead", 1),
+//       Patient("George McClellan", 4),
+//       Patient(),
+//       Patient(),
+//       Patient(),
+//       Patient(),
+//       Patient(),
+//     };
+//     Heap h(A, 7, 2);
+//     h.buildMaxHeap();
+//     Patient next = h.extractMax();
+//     TEST(next.name() == "George McClellan");
+//     TEST(h.max().name() == "George Mead");
+//
+//     h.insert(Patient("Robert E. Lee", 3));
+//     TEST(h.max().name() == "Robert E. Lee");
+//
+//     h.insert(Patient("John Pope", 2));
+//     TEST(h.max().name() == "Robert E. Lee");
+//
+//     h.insert(Patient("Stonewall Jackson", 16));
+//     TEST(h.max().name() == "Stonewall Jackson");
+//
+//     next = h.extractMax();
+//     TEST(next.name() == "Stonewall Jackson");
+//
+//     next = h.extractMax();
+//     TEST(next.name() == "Robert E. Lee");
+//
+//     next = h.extractMax();
+//     TEST(next.name() == "John Pope");
+//   }
 
   const int numSuccesses = testNum - numFails;
   cout << numSuccesses << "/" << testNum << " tests succeeded" << endl;

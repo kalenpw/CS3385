@@ -48,6 +48,7 @@ Patient Heap::at(int i) const{
 }
 int Heap::parent(int i) const{
     int parentIndex = (int) (i - 1) / 2;
+    std::cout << "The parent of " << i << " is " << parentIndex << std::endl;
     return parentIndex;
 }
 
@@ -79,40 +80,97 @@ bool Heap::hasRight(int i) const{
 //    return true;
 }
 
+void Heap::insert(Patient value){
+    n++;
+    int i = n - 1;
+    A[i] = value;
+
+    while(i >= 0 ){
+        if(i == 0 && parent(i) == 0){
+            //Don't do anything if on parent
+            i = -1;
+        }
+        
+        else{
+            //Swap i with parent i if parent i is smaller
+            int iPriority = A[i].priority();
+            int iParentPriority = A[parent(i)].priority();
+
+            if(iParentPriority < iPriority){
+                swap(i, parent(i));
+
+                i = parent(i);
+            }
+        }
+
+    }
+    
+
+}
+
+
+Patient Heap::extractMax(){
+    Patient patientSwap = A[0];
+    A[0] = A[n-1];
+    A[n-1] = patientSwap;
+}
+
+//Get the max element of a max heap
+Patient Heap::max(){
+    return A[0];
+}
+
+//Turns a normal array into a max heap
 void Heap::maxHeapify(int i){
     int leftIndex = left(i);
     int rightIndex = right(i);
     int largest = 0;
-
-    Patient leftPatient = A[leftIndex];
-    Patient rightPatient = A[rightIndex];
-    Patient largestPatient = A[largest];
+   
+    int iPriority = A[i].priority(); 
+    int leftPriority = A[leftIndex].priority();
+    int rightPriority = A[rightIndex].priority();
+    int largestPriority = 0;
     
-    if(leftIndex <= n && A[leftIndex] > A[i]){
+    if(leftIndex <= n && leftPriority > iPriority){
         largest = leftIndex;
+        largestPriority = A[leftIndex].priority();
     }
     else{
         largest = i;
+        largestPriority = A[i].priority();
     }
 
-    if(rightIndex <= n && A[rightIndex] > A[largest]){
+    if(rightIndex <= n && rightPriority > largestPriority){
         largest = rightIndex;
+        largestPriority = A[largest].priority();
     }
 
     if(largest !=  i){
-        int swap;
-        swap = A[largest];
-        A[largest] = A[i];
-        A[i] = swap;
+        swap(largest, i);
         maxHeapify(largest); 
     }
    
 }
 
 void Heap::buildMaxHeap(){
-//    for(int i = n; i >= 0; i--){
-//        maxHeapify(i);
-//    }
+    for(int i = n; i >= 0; i--){
+        maxHeapify(i);
+    }
+}
+
+void Heap::heapsort(){
+    buildMaxHeap();
+    for(int i = arraySize -1; i >= 1; i--){
+        swap(0, i);
+        n = n - 1;
+        maxHeapify(0);
+    }
+}
+
+void Heap::swap(int a, int b){
+    Patient swap = A[a];
+    A[a] = A[b];
+    A[b] = swap;
 }
 
 
