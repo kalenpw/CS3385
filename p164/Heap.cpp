@@ -1,6 +1,6 @@
 //Kalen Williams
 //CS 3385
-//08 Feb. 2017
+//13 Feb. 2017
 //Heap.cpp
 
 #include "./Heap.h"
@@ -48,7 +48,6 @@ Patient Heap::at(int i) const{
 }
 int Heap::parent(int i) const{
     int parentIndex = (int) (i - 1) / 2;
-    std::cout << "The parent of " << i << " is " << parentIndex << std::endl;
     return parentIndex;
 }
 
@@ -85,7 +84,7 @@ void Heap::insert(Patient value){
     int i = n - 1;
     A[i] = value;
 
-    while(i >= 0 ){
+    while(i > 0 ){
         if(i == 0 && parent(i) == 0){
             //Don't do anything if on parent
             i = -1;
@@ -102,10 +101,7 @@ void Heap::insert(Patient value){
                 i = parent(i);
             }
         }
-
-    }
-    
-
+    } 
 }
 
 
