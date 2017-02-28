@@ -77,27 +77,20 @@ class LinkedList {
     // Removes and deletes the first node in the linked list that has data
     // equal to the  key
     void remove(const T& key) {
-        return;
-//        ListNode<T>* previousNode = findPreviousNode(key);
-//        ListNode<T>* deleteNode;
-//        ListNode<T>* nextNode;
-//        if(previousNode->next() == NULL){
-//                        
-//        }
-//
-//        ListNode<T>* nodeToDelete = find(key);
-//        ListNode<T>* previousNode = findPreviousNode(key);
-//        ListNode<T>* nextNode;
-//        if(nodeToDelete == NULL){
-//           nextNode = NULL;
-//           previousNode->setNext(NULL);
-//        }
-//        else{
-//            nextNode = nodeToDelete->next();
-//            previousNode->setNext(nextNode);
-//        }
-////        ListNode<T>* nextNode = nodeToDelete->next();
-//        delete nodeToDelete;
+        ListNode<T>* previousNode = findPreviousNode(key);
+        ListNode<T>* deleteNode = find(key);
+        ListNode<T>* nextNode;
+
+        //If the remove node is first in list
+        if(previousNode == NULL){
+            _head = deleteNode->next();
+            delete deleteNode;
+        }
+        else{
+            nextNode = deleteNode->next();
+            previousNode->setNext(nextNode);
+            delete deleteNode;
+        }
                 
     }
 
