@@ -53,6 +53,28 @@ class LinkedList {
     _head = node;
   }
     
+    //Returns the head of LinkedList
+    ListNode<T>* getHead(){
+        return _head;
+    }
+
+    int getSize(){
+        int totalSize = 0;
+        ListNode<T>* node;
+        if(_head == NULL){
+            return 0;
+        }
+        else{
+            node = _head;
+        }
+        while(node->next() != NULL){
+            totalSize = totalSize + 1;
+            node = node->next();
+        }
+
+        return totalSize;
+    }
+
     //Returns the node with passed in value key
     ListNode<T>* find(const T& key) {
         ListNode<T>* currentNode = _head;
