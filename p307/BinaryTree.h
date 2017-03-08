@@ -1,15 +1,3 @@
-// You should start by copying your BinaryTree project into here
-// and modifying as necessary. Your BinarySearch tree will look
-// something like
-//
-//    template <typename T, typename GetKey>
-//    class BinarySearchTree {
-//    };
-//
-// One of the data members will be
-//
-//    GetKey _getKey;
-
 #pragma once
 
 // Provides I/O
@@ -28,7 +16,6 @@ class BNode {
             _data = data;
             _left = NULL;
             _right = NULL;
-            _parent = NULL;
         }
 
         //Methods
@@ -46,11 +33,6 @@ class BNode {
             return _right;
         }
 
-        //Returns the parent node
-        const BNode* parent() const {
-            return _parent;
-        }
-
         //Returns next node
         BNode* left(){
             return _left;
@@ -60,11 +42,6 @@ class BNode {
         BNode* right(){
             return _right;
         }
-
-        //Returns previous node
-        BNode* parent(){
-            return _parent;
-        }
         //Sets next node
         void setLeft(BNode<T>* node){
             _left = node;
@@ -73,17 +50,11 @@ class BNode {
         void setRight(BNode<T>* node){
             _right = node;
         }
-
-        //Sets the parent node
-        void setParent(BNode<T>* node){
-            _parent = node;
-        }
         
     private:
         T _data;
         BNode* _left;
         BNode* _right;
-        BNode* _parent;
 
 };
 
