@@ -88,15 +88,15 @@ int runTests() {
   int numFails = 0;
   int testNum = 0;
 
-//   {
-//     BinarySearchTree<int, Identity> tree;
-//     string target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
-
+   {
+     BinarySearchTree<int, Identity> tree;
+     string target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
+    }
 //     tree.insert(8);
 //     target = R"str(
 // digraph G {

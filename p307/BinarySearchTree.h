@@ -88,12 +88,19 @@ class BNode {
 };
 
 
+//    template <typename T, typename GetKey>
+//    class BinarySearchTree {
+//    };
+//
+// One of the data members will be
+//
+//    GetKey _getKey;
 //BinaryTree class
-template <typename T>
-class BinaryTree {
+template <typename T, typename GetKey>
+class BinarySearchTree {
     public:
         //Constructor
-        BinaryTree(){
+        BinarySearchTree(T type, GetKey g){
 
         }
 
@@ -180,6 +187,7 @@ class BinaryTree {
 
     private:
         BNode<T>* _head;
+        GetKey _getKey;
 
 };
 
