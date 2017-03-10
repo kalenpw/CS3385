@@ -88,6 +88,7 @@ int runTests() {
   int numFails = 0;
   int testNum = 0;
 
+   //First set of tests
    {
      BinarySearchTree<int, Identity> tree;
      string target = R"str(
@@ -96,243 +97,242 @@ int runTests() {
  }
  )str";
      TEST(stringEquals(tree.toDot(), target));
-    }
-//     tree.insert(8);
-//     target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// "8"
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
+     tree.insert(8);
+     target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ "8"
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
 
-//     tree.insert(3);
-//     target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// "3"
-// "8"
-// "8" -> "3"
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
+     tree.insert(3);
+     target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ "3"
+ "8"
+ "8" -> "3"
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
 
-//     tree.insert(12);
-//     target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// "3"
-// "8"
-// "12"
-// "8" -> "3"
-// "8" -> "12"
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
+     tree.insert(12);
+     target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ "3"
+ "8"
+ "12"
+ "8" -> "3"
+ "8" -> "12"
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
 
-//     tree.insert(15);
-//     target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// "3"
-// "8"
-// "12"
-// "15"
-// "8" -> "3"
-// "8" -> "12"
-// "12" -> "15"
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
-//   }
+     tree.insert(15);
+     target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ "3"
+ "8"
+ "12"
+ "15"
+ "8" -> "3"
+ "8" -> "12"
+ "12" -> "15"
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
+   }
+   //Second set
+   {
+     BinarySearchTree<int, Identity> tree;
+     tree.insert(12);
+     tree.insert(8);
+     tree.insert(15);
+     tree.insert(3);
+     string target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ "3"
+ "8"
+ "12"
+ "15"
+ "12" -> "8"
+ "12" -> "15"
+ "8" -> "3"
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
+   }
 
-//   {
-//     BinarySearchTree<int, Identity> tree;
-//     tree.insert(12);
-//     tree.insert(8);
-//     tree.insert(15);
-//     tree.insert(3);
-//     string target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// "3"
-// "8"
-// "12"
-// "15"
-// "12" -> "8"
-// "12" -> "15"
-// "8" -> "3"
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
-//   }
+   {
+     BinarySearchTree<int, Identity> tree;
+     tree.insert(3);
+     tree.insert(8);
+     tree.insert(15);
+     tree.insert(12);
+     string target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ "3"
+ "8"
+ "12"
+ "15"
+ "3" -> "8"
+ "8" -> "15"
+ "15" -> "12"
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
+   }
 
-//   {
-//     BinarySearchTree<int, Identity> tree;
-//     tree.insert(3);
-//     tree.insert(8);
-//     tree.insert(15);
-//     tree.insert(12);
-//     string target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// "3"
-// "8"
-// "12"
-// "15"
-// "3" -> "8"
-// "8" -> "15"
-// "15" -> "12"
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
-//   }
+   {
+     BinarySearchTree<int, Identity> tree;
+     tree.insert(8);
+     tree.insert(4);
+     tree.insert(12);
+     tree.insert(2);
+     tree.insert(6);
+     tree.insert(10);
+     tree.insert(14);
+     tree.insert(1);
+     tree.insert(3);
+     tree.insert(5);
+     tree.insert(7);
+     tree.insert(9);
+     tree.insert(11);
+     tree.insert(13);
+     tree.insert(15);
+     string target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ "1"
+ "2"
+ "3"
+ "4"
+ "5"
+ "6"
+ "7"
+ "8"
+ "9"
+ "10"
+ "11"
+ "12"
+ "13"
+ "14"
+ "15"
+ "8" -> "4"
+ "8" -> "12"
+ "4" -> "2"
+ "4" -> "6"
+ "2" -> "1"
+ "2" -> "3"
+ "6" -> "5"
+ "6" -> "7"
+ "12" -> "10"
+ "12" -> "14"
+ "10" -> "9"
+ "10" -> "11"
+ "14" -> "13"
+ "14" -> "15"
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
+   }
 
-//   {
-//     BinarySearchTree<int, Identity> tree;
-//     tree.insert(8);
-//     tree.insert(4);
-//     tree.insert(12);
-//     tree.insert(2);
-//     tree.insert(6);
-//     tree.insert(10);
-//     tree.insert(14);
-//     tree.insert(1);
-//     tree.insert(3);
-//     tree.insert(5);
-//     tree.insert(7);
-//     tree.insert(9);
-//     tree.insert(11);
-//     tree.insert(13);
-//     tree.insert(15);
-//     string target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// "1"
-// "2"
-// "3"
-// "4"
-// "5"
-// "6"
-// "7"
-// "8"
-// "9"
-// "10"
-// "11"
-// "12"
-// "13"
-// "14"
-// "15"
-// "8" -> "4"
-// "8" -> "12"
-// "4" -> "2"
-// "4" -> "6"
-// "2" -> "1"
-// "2" -> "3"
-// "6" -> "5"
-// "6" -> "7"
-// "12" -> "10"
-// "12" -> "14"
-// "10" -> "9"
-// "10" -> "11"
-// "14" -> "13"
-// "14" -> "15"
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
-//   }
+   {
+     BinarySearchTree<int, Identity> tree;
+     tree.insert(8);
+     tree.insert(4);
+     tree.insert(10);
+     tree.insert(14);
+     tree.insert(12);
+     tree.insert(2);
+     tree.insert(1);
+     tree.insert(6);
+     tree.insert(11);
+     tree.insert(5);
+     tree.insert(7);
+     tree.insert(9);
+     tree.insert(3);
+     tree.insert(13);
+     tree.insert(15);
+     string target = R"str(
+ digraph G {
+ graph [ordering="out"]
+ "1"
+ "2"
+ "3"
+ "4"
+ "5"
+ "6"
+ "7"
+ "8"
+ "9"
+ "10"
+ "11"
+ "12"
+ "13"
+ "14"
+ "15"
+ "8" -> "4"
+ "8" -> "10"
+ "4" -> "2"
+ "4" -> "6"
+ "2" -> "1"
+ "2" -> "3"
+ "6" -> "5"
+ "6" -> "7"
+ "10" -> "9"
+ "10" -> "14"
+ "14" -> "12"
+ "14" -> "15"
+ "12" -> "11"
+ "12" -> "13"
+ }
+ )str";
+     TEST(stringEquals(tree.toDot(), target));
+   }
 
-//   {
-//     BinarySearchTree<int, Identity> tree;
-//     tree.insert(8);
-//     tree.insert(4);
-//     tree.insert(10);
-//     tree.insert(14);
-//     tree.insert(12);
-//     tree.insert(2);
-//     tree.insert(1);
-//     tree.insert(6);
-//     tree.insert(11);
-//     tree.insert(5);
-//     tree.insert(7);
-//     tree.insert(9);
-//     tree.insert(3);
-//     tree.insert(13);
-//     tree.insert(15);
-//     string target = R"str(
-// digraph G {
-// graph [ordering="out"]
-// "1"
-// "2"
-// "3"
-// "4"
-// "5"
-// "6"
-// "7"
-// "8"
-// "9"
-// "10"
-// "11"
-// "12"
-// "13"
-// "14"
-// "15"
-// "8" -> "4"
-// "8" -> "10"
-// "4" -> "2"
-// "4" -> "6"
-// "2" -> "1"
-// "2" -> "3"
-// "6" -> "5"
-// "6" -> "7"
-// "10" -> "9"
-// "10" -> "14"
-// "14" -> "12"
-// "14" -> "15"
-// "12" -> "11"
-// "12" -> "13"
-// }
-// )str";
-//     TEST(stringEquals(tree.toDot(), target));
-//   }
+   {
+     BinarySearchTree<int, Identity> tree;
+     tree.insert(8);
+     tree.insert(4);
+     tree.insert(10);
+     // Use the following function signature:
+     //     T min() {
+     //       ...
+     //     }
+     TEST(tree.min() == 4);
+     TEST(tree.max() == 10);
+   }
 
-//   {
-//     BinarySearchTree<int, Identity> tree;
-//     tree.insert(8);
-//     tree.insert(4);
-//     tree.insert(10);
-//     // Use the following function signature:
-//     //     T min() {
-//     //       ...
-//     //     }
-//     TEST(tree.min() == 4);
-//     TEST(tree.max() == 10);
-//   }
+   {
+     BinarySearchTree<int, Identity> tree;
+     tree.insert(11);
+     tree.insert(7);
+     tree.insert(5);
+     TEST(tree.min() == 5);
+     TEST(tree.max() == 11);
+   }
 
-//   {
-//     BinarySearchTree<int, Identity> tree;
-//     tree.insert(11);
-//     tree.insert(7);
-//     tree.insert(5);
-//     TEST(tree.min() == 5);
-//     TEST(tree.max() == 11);
-//   }
-
-//   {
-//     BinarySearchTree<int, Identity> tree;
-//     tree.insert(11);
-//     tree.insert(7);
-//     tree.insert(5);
+   {
+     BinarySearchTree<int, Identity> tree;
+     tree.insert(11);
+     tree.insert(7);
+     tree.insert(5);
 //     TEST(tree.contains(11));
 //     TEST(tree.contains(7));
 //     TEST(tree.contains(5));
 //     TEST(!tree.contains(1));
 //     TEST(!tree.contains(6));
 
-//     TEST(tree.get(11) == 11);
-//     TEST(tree.get(7) == 7);
-//     TEST(tree.get(5) == 5);
-//   }
+     TEST(tree.get(11) == 11);
+     TEST(tree.get(7) == 7);
+     TEST(tree.get(5) == 5);
+   }
 
 //   {
 //     // Use GetId as the getKey function so that nodes

@@ -100,19 +100,103 @@ template <typename T, typename GetKey>
 class BinarySearchTree {
     public:
         //Constructor
-        BinarySearchTree(T type, GetKey g){
-
+        BinarySearchTree(){
+            _head = NULL;
         }
 
         //Methods
+       
+
         void setHead(BNode<T>* value){
             _head = value;
         }
         BNode<T>* head(){
             return _head;
         }
+
+        T min(){
+            BNode<T>* node = _head;
+            while(node->left() != NULL){
+                node = node->left();
+            }   
+            return node->data();
+        }
+
+        T max(){
+            BNode<T>* node = _head;
+            while(node->right() != NULL){
+                node = node->right();
+            }   
+            return node->data();
+        }
+
+        //Inserts an element into BinarySearchTree
+        void insert(T toInsert){
+            BNode<T>* z = new BNode<T>(toInsert);//node
+            BNode<T>* y = NULL;//cNode
+            BNode<T>* x = _head;//fNode
+
+            while(x != NULL){
+                y = x;
+                if(z->data() < y->data()){
+                    x = y->left();
+                    //x->setLeft(x);
+                }
+                else{
+                    x = y->right();
+                    //x->setRight(x);
+                }
+
+            }
+            
+            z->setParent(y);
+            if(y == NULL){
+                _head = z;
+            }
+            else if(z->data() < y->data()){
+                y->setLeft(z);
+            }
+            else{
+                y->setRight(z);
+            }
+
+        }
         
-        BNode<T>* find(const T& key, BNode<T>* node){
+
+        T get(T key){ 
+            return getImpl(key, _head); 
+        }
+
+        T getImpl(T key, BNode<T>* node){
+            if(node != NULL){
+                if(key == node->data()){
+                    return node->data();
+                }
+                if(key < node->data()){
+                    return getImpl(key, node->left());
+                }
+                if(key > node->data()){
+                    return getImpl(key, node->right());
+                }
+
+
+            }
+            else{
+                return NULL;
+            }
+        }
+        
+        bool contains(T key){
+            T find = getImpl(key, _head);
+            if(find == NULL){
+                return false;
+            }
+            else{
+                return true;
+            }
+        } 
+
+        BNode<T>* fget(const T& key, BNode<T>* node){
             return node; 
 //            if(node != NULL){
 //                if(key == node->data()){
@@ -155,31 +239,51 @@ class BinarySearchTree {
 
         }    
 
+        std::string printInOrder(){
+            
+        }
+        
+        std::string toDotValues(BNode<T>* node) {
+             using namespace std;
+             string str;
+             if(node == NULL){
+                return "";
+             }
+             str += toDotValues(node->left());
+             str += dotNode(node->data());
+             str += toDotValues(node->right());
+            
+             return str;
+             
+         }
         //To dot methods
         std::string toDotImpl(BNode<T>* node) {
              using namespace std;
              if (!node) return "";
-                string str;
+             
+             string str;
              if (node->left()) {
-               str += dotEdge(node->data(), node->left()->data());
+                 str += dotEdge(node->data(), node->left()->data());
              }
              if (node->right()) {
-               str += dotEdge(node->data(), node->right()->data());
+                 str += dotEdge(node->data(), node->right()->data());
              }
-
+  
              if (node->left()) {
-               str += toDotImpl(node->left());
+                 str += toDotImpl(node->left());
              }
              if (node->right()) {
-               str += toDotImpl(node->right());
+                 str += toDotImpl(node->right());
              }
              return str;
+             
          }
 
          std::string toDot() {
            using namespace std;
            string str = "digraph G {\n";
            str += "graph [ordering=\"out\"]\n";
+           str += toDotValues(_head);
            str += toDotImpl(_head);
            str += "}\n";
            return str;
