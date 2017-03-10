@@ -138,7 +138,7 @@ class BinarySearchTree {
 
             while(x != NULL){
                 y = x;
-                if(z->data() < y->data()){
+                if(getKey(z->data()) < getKey(y->data())){
                     x = y->left();
                     //x->setLeft(x);
                 }
@@ -153,29 +153,35 @@ class BinarySearchTree {
             if(y == NULL){
                 _head = z;
             }
-            else if(z->data() < y->data()){
+            else if(getKey(z->data()) < getKey(y->data())){
                 y->setLeft(z);
             }
             else{
                 y->setRight(z);
             }
 
-        }
-        
+        }        
 
-        T get(T key){ 
+        T get(int key){ 
+            if(dynamic_cast<BNode*<Student>>(_head)){
+                return new Student("Kalen", 1, 2);
+            }
             return getImpl(key, _head); 
         }
 
-        T getImpl(T key, BNode<T>* node){
+        T getImpl(int key, BNode<T>* node){
+
+            if(dynamic_cast<BNode*<Student>>(node)){
+                return new Student("Kalen", 1, 2);
+            }
             if(node != NULL){
-                if(key == node->data()){
+                if(key == getKey(node->data())){
                     return node->data();
                 }
-                if(key < node->data()){
+                if(key < getKey(node->data())){
                     return getImpl(key, node->left());
                 }
-                if(key > node->data()){
+                if(key > getKey(node->data())){
                     return getImpl(key, node->right());
                 }
 
@@ -186,8 +192,10 @@ class BinarySearchTree {
             }
         }
         
-        bool contains(T key){
+        bool contains(int key){
+            //return false;
             T find = getImpl(key, _head);
+            
             if(find == NULL){
                 return false;
             }
@@ -196,52 +204,13 @@ class BinarySearchTree {
             }
         } 
 
-        BNode<T>* fget(const T& key, BNode<T>* node){
-            return node; 
-//            if(node != NULL){
-//                if(key == node->data()){
-//                    return node;
-//                }
-//                if(key < node->data()){
-//                    return find(key, node->left());
-//                }
-//                else{
-//                    return find(key, node->right());
-//                }
-//
-//            }
-//            else{
-//                return NULL;
-//            }
-//            return NULL;
-//            while(node != NULL){
-//                if(node->data() == key){
-//                    return node;
-//                }
-//
-//                if(key > node->data()){
-//                    node = node->right();
-//                }
-//                if(key < node->data()){
-//                    node = node->left();
-//                }
-//                
-//            }
-
-
-//            if(node->data() == key){
-//                return node;
-//            }
-//            else{
-//                find(key, node->left());
-//                find(key, node ->right());
-//            }
-
-        }    
-
-        std::string printInOrder(){
-            
+        void remove(int i){
+            return;
         }
+        void getInOrder(T key){
+            return;
+        }
+
         
         std::string toDotValues(BNode<T>* node) {
              using namespace std;
@@ -291,7 +260,7 @@ class BinarySearchTree {
 
     private:
         BNode<T>* _head;
-        GetKey _getKey;
+        GetKey getKey;
 
 };
 
