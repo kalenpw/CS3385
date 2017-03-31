@@ -66,7 +66,7 @@ int runTests() {
 
   int numFails = 0;
   int testNum = 0;
-
+   //Tests
    {
      // Visit huffman.h and follow the instructions for
      // getting a node class up and running. In this project
@@ -105,6 +105,7 @@ int runTests() {
     // for(int i = 0; i < 256; i++){
     //    std::cout << "Index " << i << " has " << tet[i] <<std::endl;
     // }
+    //
      // This code builds a character-frequency table
      // similar to what is shown on page 429 of the
      // textbook.
@@ -139,61 +140,61 @@ int runTests() {
      TEST(codewords['f'] == "1100");
    }
 
-//   {
-//     int freq[256];
-//     std::fill(freq, freq+256, 0);
-//     freq[' '] = 18;
-//     freq['!'] = 20;
-//     freq['('] = 1;
-//     freq['x'] = 13;
-//     freq['#'] = 33;
-//     freq['4'] = 444;
+   {
+     int freq[256];
+     std::fill(freq, freq+256, 0);
+     freq[' '] = 18;
+     freq['!'] = 20;
+     freq['('] = 1;
+     freq['x'] = 13;
+     freq['#'] = 33;
+     freq['4'] = 444;
 
-//     Node* root = buildBinaryTree(freq);
-//     string codewords[256];
-//     getCodewords(root, codewords);
-//     TEST(codewords[' '] == "0111");
-//     TEST(codewords['!'] == "010");
-//     TEST(codewords['('] == "01100");
-//     TEST(codewords['x'] == "01101");
-//     TEST(codewords['#'] == "00");
-//     TEST(codewords['4'] == "1");
-//   }
+     Node* root = buildBinaryTree(freq);
+     string codewords[256];
+     getCodewords(root, codewords);
+     TEST(codewords[' '] == "0111");
+     TEST(codewords['!'] == "010");
+     TEST(codewords['('] == "01100");
+     TEST(codewords['x'] == "01101");
+     TEST(codewords['#'] == "00");
+     TEST(codewords['4'] == "1");
+   }
 
-//   {
-//     string compressed =
-//         compressData("sssssssssssssssssssAssssssssssssssssssssssssss");
-//     TEST(compressed.size() == 22);
-//     string target = R"str(
-// 2
-// 65 1
-// 115 4
-// )str";
-//     TEST(stringEquals(compressed.substr(0, 12), target));
-//     TEST((int)compressed[14] == 52);
-//     TEST((int)compressed[15] == 54);
-//     TEST((int)compressed[20] == -1);
-//     TEST((int)compressed[21] == -4);
-//   }
+   {
+     string compressed =
+         compressData("sssssssssssssssssssAssssssssssssssssssssssssss");
+     TEST(compressed.size() == 22);
+     string target = R"str(
+ 2
+ 65 1
+ 115 4
+ )str";
+     TEST(stringEquals(compressed.substr(0, 12), target));
+     TEST((int)compressed[14] == 52);
+     TEST((int)compressed[15] == 54);
+     TEST((int)compressed[20] == -1);
+     TEST((int)compressed[21] == -4);
+   }
 
-//   {
-//     string compressed = compressData("Hello world!");
-//     TEST(compressed.size() == 60);
-//     string original = uncompressData(compressed);
-//     TEST(original == "Hello world!");
-//     TEST(original[0] == 'H');
-//     TEST(original[1] == 'e');
-//     TEST(original[2] == 'l');
-//     TEST(original[3] == 'l');
-//     TEST(original[4] == 'o');
-//     TEST(original[5] == ' ');
-//     TEST(original[6] == 'w');
-//     TEST(original[7] == 'o');
-//     TEST(original[8] == 'r');
-//     TEST(original[9] == 'l');
-//     TEST(original[10] == 'd');
-//     TEST(original[11] == '!');
-//   }
+   {
+     string compressed = compressData("Hello world!");
+     TEST(compressed.size() == 60);
+     string original = uncompressData(compressed);
+     TEST(original == "Hello world!");
+     TEST(original[0] == 'H');
+     TEST(original[1] == 'e');
+     TEST(original[2] == 'l');
+     TEST(original[3] == 'l');
+     TEST(original[4] == 'o');
+     TEST(original[5] == ' ');
+     TEST(original[6] == 'w');
+     TEST(original[7] == 'o');
+     TEST(original[8] == 'r');
+     TEST(original[9] == 'l');
+     TEST(original[10] == 'd');
+     TEST(original[11] == '!');
+   }
 
   const int numSuccesses = testNum - numFails;
   cout << numSuccesses << "/" << testNum << " tests succeeded" << endl;

@@ -16,12 +16,17 @@ using std::priority_queue;
 template <typename T>
 class BNode {
  public:
+     //Key = frequency
+     //data = character
   BNode(const int key, const T& data) {
     _key = key;
     _data = data;
     _parent = _left = _right = NULL;
   }
-
+  
+  void setKey(int key){
+    _key = key;
+  }
   const int key() const { return _key; }
   const T& data() const { return _data; }
 
@@ -57,6 +62,7 @@ class NodeComp {
     return a->key() > b->key();
   }
 };
+
 
 // struct CharFreq {
 //   char c;
