@@ -1,0 +1,11 @@
+start with creating set with
+set data structure
+-head pointer to node
+-tail pointer to node
+
+node will have
+pointer to set object and pointer to next node
+a piece of data(int in this project)
+
+second part find connected components in images
+
