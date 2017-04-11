@@ -38,19 +38,19 @@ int runTests() {
   int numFails = 0;
   int testNum = 0;
 
-  // {
-  //   // This test matches figure 21.2 in the book.
-  //   Node* f = makeSet();
-  //   Node* g = makeSet();
-  //   Node* d = makeSet();
-  //   Node* c = makeSet();
-  //   Node* h = makeSet();
-  //   Node* e = makeSet();
-  //   Node* b = makeSet();
-  //   TEST(find(f) == f);
-  //   TEST(find(g) == g);
-  //   TEST(find(f) != find(g));
-
+   {
+     // This test matches figure 21.2 in the book.
+     Node* f = makeSet();
+     Node* g = makeSet();
+     Node* d = makeSet();
+     Node* c = makeSet();
+     Node* h = makeSet();
+     Node* e = makeSet();
+     Node* b = makeSet();
+     TEST(find(f) == f);
+     TEST(find(g) == g);
+     TEST(find(f) != find(g));
+   }
   //   makeUnion(f, g);
   //   TEST(find(f) == f);
   //   TEST(find(g) == f);

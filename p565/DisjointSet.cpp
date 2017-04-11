@@ -3,14 +3,33 @@
 #include "./DisjointSet.h"
 #include "./bmp.h"
 
-// Node* makeSet() {
-// }
+Node* makeSet() {
+//    DisjointSet set = new DisjointSet();
+//    DisjointSet set();
+    Node* node = new Node();
+    node->setNextNode(node);
+//    set.setHead(node);
+    return node; 
+}
 
-// Node* makeSet(int data) {
-// }
+Node* makeSet(int data) {
+//    DisjointSet set = new DisjointSet();
+    DisjointSet set();
+    Node* node = new Node(data);
+    return node;
+}
 
-// Node* find(Node* x) {
-// }
+Node* find(Node* x) {
+    Node* parent = x->getNextNode();
+
+    if(parent == x){
+        return x;
+    }
+    else{
+        return find(x->getNextNode());
+    }
+    
+}
 
 // If the size of x's set is greater than or equal to the
 // size of y's set, then merge y into x. Otherwise, merge x
@@ -28,8 +47,14 @@
 // This function is called makeUnion() rather than just
 // union() because union is a reserved word in C++.
 //
-// void makeUnion(Node* x, Node* y) {
-// }
+void link(Node* x, Node* y){
+    //if x.size > y.size:
+    
+
+}
+
+void makeUnion(Node* x, Node* y) {
+}
 
 // void quantizeImage(
 //     const std::string& infile, const std::string& outfile, int numBins) {

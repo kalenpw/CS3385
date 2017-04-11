@@ -20,18 +20,80 @@
 //   class DisjointSet {
 //   };
 
-// TODO: place data structure code here
+//place data structure code here
+class DisjointSet;
+
+class Node {
+    public:
+        //Constructor
+        //No arg
+        Node(){
+        }
+        //With given data
+        Node(int data){
+            _data = data;
+        }
+
+        //Accessors & mutators
+        void setData(int data){
+            _data = data;
+        }
+        int getData(){
+            return _data;
+        }
+
+        void setNextNode(Node* node){
+            _nextNode = node;
+        }
+
+        Node* getNextNode(){
+            return _nextNode;
+        }
+
+
+    private:
+        DisjointSet* _set;
+        Node* _nextNode;
+        int _data;
+};
+
+class DisjointSet{
+    public:
+        //constructor
+        DisjointSet(){
+
+        }
+        
+        //Accessor & mutator
+        void setHead(Node* node){
+            _head = node;
+        }
+
+        void setTail(Node* node){
+            _tail = node;
+        }
+        
+        int getSize(){
+            return _size;
+        }
+
+    private:
+        Node* _tail;
+        Node* _head;
+        int _size;
+};
 
 // TODO: uncomment function declarations and implement them in
 // DisjointSet.cpp
 
-// Node* makeSet();
+Node* makeSet();
 
 // // A node can hold data.
-// Node* makeSet(int data);
+Node* makeSet(int data);
 
-// Node* find(Node* x);
+Node* find(Node* x);
 
+void link(Node* x, Node* y);
 // // If x is greater than or equal to y, then merge y into x.
 // // Otherwise, merge x into y. After merging, be sure to delete
 // // one of the disjoint sets or you will have memory leaks.
@@ -43,7 +105,7 @@
 // //
 // // This function is called makeUnion() rather than just
 // // union() because union is a reserved word in C++.
-// void makeUnion(Node* x, Node* y);
+void makeUnion(Node* x, Node* y);
 
 // // This function converts the input image to grayscale and quantizes the
 // // intensities into numBins unique intensities. In effect, it reduces
