@@ -47,93 +47,93 @@ int runTests() {
      Node* h = makeSet();
      Node* e = makeSet();
      Node* b = makeSet();
-     TEST(find(f) == f);
-     TEST(find(g) == g);
-     TEST(find(f) != find(g));
+     TEST(find(f) == f);//1
+     TEST(find(g) == g);//2
+     TEST(find(f) != find(g));//3
+  
+     makeUnion(f, g);
+     TEST(find(f) == f);//4
+     TEST(find(g) == f);//5
+
+     makeUnion(f, d);
+     TEST(find(f) == f);//6
+     TEST(find(g) == f);//7
+     TEST(find(d) == f);//8
+
+     // Heads up! g and d are in the same set!
+     makeUnion(g, d);
+     TEST(find(f) == f);//9
+     TEST(find(g) == f);//10
+     TEST(find(d) == f);//11
+
+     makeUnion(c, h);
+     makeUnion(e, b);
+     makeUnion(h, b);
+     TEST(find(c) == c);//12
+     TEST(find(h) == c);//13
+     TEST(find(e) == c);
+     TEST(find(b) == c);
+
+     // This is different from figure 21.2. The figure doesn't use a
+     // weighted union heuristic, but we do, so we merge set S1
+     // (using the names given in the book) into set S2.
+     makeUnion(g, e);
+     TEST(find(f) == c);//16
+     TEST(find(g) == c);
+     TEST(find(d) == c);
+     TEST(find(c) == c);
+     TEST(find(h) == c);
+     TEST(find(e) == c);
+     TEST(find(b) == c);//22
    }
-  //   makeUnion(f, g);
-  //   TEST(find(f) == f);
-  //   TEST(find(g) == f);
 
-  //   makeUnion(f, d);
-  //   TEST(find(f) == f);
-  //   TEST(find(g) == f);
-  //   TEST(find(d) == f);
+   {
+     // It's helpful to be able to store data as we'll see when
+     // we find connected components in images. In this case,
+     // just store an int for simplicity.
+     Node* f = makeSet(3);
+     Node* g = makeSet(8);
+     Node* d = makeSet(12);
+     TEST(find(f)->data() == 3);
+     TEST(find(g)->data() == 8);
+     TEST(find(d)->data() == 12);
 
-  //   // Heads up! g and d are in the same set!
-  //   makeUnion(g, d);
-  //   TEST(find(f) == f);
-  //   TEST(find(g) == f);
-  //   TEST(find(d) == f);
+     makeUnion(f, g);
+     TEST(find(f)->data() == 3);
+     TEST(find(g)->data() == 3);
+     TEST(find(d)->data() == 12);
 
-  //   makeUnion(c, h);
-  //   makeUnion(e, b);
-  //   makeUnion(h, b);
-  //   TEST(find(c) == c);
-  //   TEST(find(h) == c);
-  //   TEST(find(e) == c);
-  //   TEST(find(b) == c);
+     makeUnion(f, d);
+     TEST(find(f)->data() == 3);
+     TEST(find(g)->data() == 3);
+     TEST(find(d)->data() == 3);
+   }
 
-  //   // This is different from figure 21.2. The figure doesn't use a
-  //   // weighted union heuristic, but we do, so we merge set S1
-  //   // (using the names given in the book) into set S2.
-  //   makeUnion(g, e);
-  //   TEST(find(f) == c);
-  //   TEST(find(g) == c);
-  //   TEST(find(d) == c);
-  //   TEST(find(c) == c);
-  //   TEST(find(h) == c);
-  //   TEST(find(e) == c);
-  //   TEST(find(b) == c);
-  // }
+   {
+     // This function will help you see how to access an image.
+     // Your result should look like test4/5-quantized-target.bmp.
+     // There is no unit test for this. Your result images will
+     // be visually inspected.
+     quantizeImage("test4.bmp", "test4-quantized.bmp", 10);
+     quantizeImage("test5.bmp", "test5-quantized.bmp", 4);
+   }
 
-  // {
-  //   // It's helpful to be able to store data as we'll see when
-  //   // we find connected components in images. In this case,
-  //   // just store an int for simplicity.
-  //   Node* f = makeSet(3);
-  //   Node* g = makeSet(8);
-  //   Node* d = makeSet(12);
-  //   TEST(find(f)->data() == 3);
-  //   TEST(find(g)->data() == 8);
-  //   TEST(find(d)->data() == 12);
-
-  //   makeUnion(f, g);
-  //   TEST(find(f)->data() == 3);
-  //   TEST(find(g)->data() == 3);
-  //   TEST(find(d)->data() == 12);
-
-  //   makeUnion(f, d);
-  //   TEST(find(f)->data() == 3);
-  //   TEST(find(g)->data() == 3);
-  //   TEST(find(d)->data() == 3);
-  // }
-
-  // {
-  //   // This function will help you see how to access an image.
-  //   // Your result should look like test4/5-quantized-target.bmp.
-  //   // There is no unit test for this. Your result images will
-  //   // be visually inspected.
-  //   quantizeImage("test4.bmp", "test4-quantized.bmp", 10);
-  //   quantizeImage("test5.bmp", "test5-quantized.bmp", 4);
-  // }
-
-  // {
-  //   // Finds the connected components of an image and writes a new
-  //   // image where each connected component has its own color.
-  //   // For tests 1 and 2 there is a testx-cc-target.bmp file to
-  //   // make sure yours is correct. The colors may be different
-  //   // due to different random number generators on different
-  //   // compilers.
-  //   // 
-  //   // There is no unit test for this. Your result images will
-  //   // be visually inspected.
-  //   connectedComponents("test1.bmp", "test1-cc.bmp", 10);
-  //   connectedComponents("test2.bmp", "test2-cc.bmp", 10);
-  //   connectedComponents("test3.bmp", "test3-cc.bmp", 10);
-  //   connectedComponents("test4.bmp", "test4-cc.bmp", 10);
-  //   connectedComponents("test5.bmp", "test5-cc.bmp", 4);
-  // }
+   {
+     // Finds the connected components of an image and writes a new
+     // image where each connected component has its own color.
+     // For tests 1 and 2 there is a testx-cc-target.bmp file to
+     // make sure yours is correct. The colors may be different
+     // due to different random number generators on different
+     // compilers.
+     // 
+     // There is no unit test for this. Your result images will
+     // be visually inspected.
+     connectedComponents("test1.bmp", "test1-cc.bmp", 10);
+     connectedComponents("test2.bmp", "test2-cc.bmp", 10);
+     connectedComponents("test3.bmp", "test3-cc.bmp", 10);
+     connectedComponents("test4.bmp", "test4-cc.bmp", 10);
+     connectedComponents("test5.bmp", "test5-cc.bmp", 4);
+   }
 
   const int numSuccesses = testNum - numFails;
   cout << numSuccesses << "/" << testNum << " tests succeeded" << endl;

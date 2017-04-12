@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <string>
+#include <iostream>
 
 // Your Node and DisjointSet classes will have references to each other.
 // Circular references are handled by
@@ -35,10 +36,25 @@ class Node {
         }
 
         //Accessors & mutators
+        void setDisjointSet(DisjointSet* set){
+            _set = set;
+        }
+        DisjointSet* getDisjointSet(){
+            if(_set){
+                std::cout << "Oops";
+                return _set;
+            }
+            else{
+                DisjointSet* set;
+                //set->setSize(0);
+                return set;
+            }
+        }
         void setData(int data){
             _data = data;
         }
-        int getData(){
+        //getData()
+        int data(){
             return _data;
         }
 
@@ -61,7 +77,7 @@ class DisjointSet{
     public:
         //constructor
         DisjointSet(){
-
+            _size = 0;
         }
         
         //Accessor & mutator
@@ -73,8 +89,15 @@ class DisjointSet{
             _tail = node;
         }
         
+        void setSize(int amount){
+            _size = amount;
+        }
         int getSize(){
             return _size;
+        }
+
+        void increaseSizeBy(int amount){
+            _size = _size + amount;
         }
 
     private:
@@ -112,11 +135,11 @@ void makeUnion(Node* x, Node* y);
 // // the number of colors in the image. This function is a warm-up
 // // to learn the Bitmap interface so you can use it for finding
 // // connected components in the connectedComponents() function.
-// void quantizeImage(
-//     const std::string& infile, const std::string& outfile, int numBins);
+ void quantizeImage(
+     const std::string& infile, const std::string& outfile, int numBins);
 
 // // This function finds all connected components in the quantized input
 // // image and writes a new image with each connected component having
 // // its own color.
-// void connectedComponents(
-//     const std::string& infile, const std::string& outfile, int numBins);
+ void connectedComponents(
+     const std::string& infile, const std::string& outfile, int numBins);
