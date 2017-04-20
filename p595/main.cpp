@@ -89,53 +89,54 @@ int runTests() {
   int numFails = 0;
   int testNum = 0;
 
-  // {
-  //   // Create a Graph class. It should have a vector of Vertex
-  //   // pointers. Implement the Graph class in Graph.h.
-  //   Graph G;
-  //   // Add a function to add vertices.
-  //   Vertex* A = G.addVertex("A");
-  //   Vertex* B = G.addVertex("B");
-  //   TEST_EQUAL(G.numVertices(), 2);
-  //   TEST_EQUAL(A->data(), "A");
-  //   TEST_EQUAL(B->data(), "B");
-  //   // The best way to implement getVertex is for your Graph
-  //   // class to have a hashtable mapping vertex names to the
-  //   // vertices themselves. You can do this as follows:
-  //   //     std::unordered_map<std::string, Vertex*> _key2vertex;
-  //   // Then, to check if it exists,
-  //   //     bool exists = (_key2vertex.find(name) == _key2vertex.end());
-  //   // Finally, to add and retrieve a vertex,
-  //   //     _key2vertex[name] = v; // add
-  //   //     Vertex* v = _key2vertex[name]; // retrieve
-  //   TEST_EQUAL(G.getVertex("A"), A);
+   {
+     // Create a Graph class. It should have a vector of Vertex
+     // pointers. Implement the Graph class in Graph.h.
+     Graph G;
+     // Add a function to add vertices.
+     Vertex* A = G.addVertex("A");
+     Vertex* B = G.addVertex("B");
+     TEST_EQUAL(G.numVertices(), 2);
+     TEST_EQUAL(A->data(), "A");
+     TEST_EQUAL(B->data(), "B");
+  
+     // The best way to implement getVertex is for your Graph
+     // class to have a hashtable mapping vertex names to the
+     // vertices themselves. You can do this as follows:
+     //     std::unordered_map<std::string, Vertex*> _key2vertex;
+     // Then, to check if it exists,
+     //     bool exists = (_key2vertex.find(name) == _key2vertex.end());
+     // Finally, to add and retrieve a vertex,
+     //     _key2vertex[name] = v; // add
+     //     Vertex* v = _key2vertex[name]; // retrieve
+     TEST_EQUAL(G.getVertex("A"), A);
 
-  //   // ensureVertex should check if a vertex with the given
-  //   // name already exists and return the existing vertex if
-  //   // it does. Add a new vertex otherwise.
-  //   Vertex* AA = G.ensureVertex("A");
-  //   TEST_EQUAL(A, AA);
-  //   TEST_EQUAL(G.numVertices(), 2);
+     // ensureVertex should check if a vertex with the given
+     // name already exists and return the existing vertex if
+     // it does. Add a new vertex otherwise.
+     Vertex* AA = G.ensureVertex("A");
+     TEST_EQUAL(A, AA);
+     TEST_EQUAL(G.numVertices(), 2);
 
-  //   Vertex* BB = G.ensureVertex("B");
-  //   TEST_EQUAL(G.numVertices(), 2);
-  //   TEST_EQUAL(B, BB);
+     Vertex* BB = G.ensureVertex("B");
+     TEST_EQUAL(G.numVertices(), 2);
+     TEST_EQUAL(B, BB);
 
-  //   Vertex* C = G.ensureVertex("C");
-  //   TEST_EQUAL(G.numVertices(), 3);
-
-  //   // Implement the data structure in figure 22.1(b) of the book.
-  //   // Each node in a linked list should store a pointer to the
-  //   // neighbor's Vertex object (the book stores the name of the
-  //   // vertex but you should store a pointer for efficiency) and
-  //   // should also store a name for the edge.
-  //   G.addEdge(A, B, "A-B");
-  //   TEST(G.hasEdge(A, B));
-  //   TEST(G.hasEdge(B, A));
-  //   TEST(!G.hasEdge(A, A));
-  //   TEST_EQUAL(G.getEdgeData(A, B), "A-B");
-  //   TEST_EQUAL(G.getEdgeData(B, A), "A-B");
-
+     Vertex* C = G.ensureVertex("C");
+     TEST_EQUAL(G.numVertices(), 3);//Working to this point
+   
+     // Implement the data structure in figure 22.1(b) of the book.
+     // Each node in a linked list should store a pointer to the
+     // neighbor's Vertex object (the book stores the name of the
+     // vertex but you should store a pointer for efficiency) and
+     // should also store a name for the edge.
+     G.addEdge(A, B, "A-B");
+     TEST(G.hasEdge(A, B));
+     TEST(G.hasEdge(B, A));
+     TEST(!G.hasEdge(A, A));
+     TEST_EQUAL(G.getEdgeData(A, B), "A-B");
+     TEST_EQUAL(G.getEdgeData(B, A), "A-B");
+   }
   //   Vertex* D = G.addVertex("D");
   //   Vertex* E = G.ensureVertex("E");
   //   G.addEdge(A, C, "Hello world");
