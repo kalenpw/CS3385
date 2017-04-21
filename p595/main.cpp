@@ -136,81 +136,81 @@ int runTests() {
      TEST(!G.hasEdge(A, A));
      TEST_EQUAL(G.getEdgeData(A, B), "A-B");
      TEST_EQUAL(G.getEdgeData(B, A), "A-B");
+   
+     Vertex* D = G.addVertex("D");
+     Vertex* E = G.ensureVertex("E");
+     G.addEdge(A, C, "Hello world");
+     G.addEdge(D, C, "");
+     G.addEdge(E, C, "");
+     G.addEdge(E, D, "");
+     TEST(G.hasEdge(A, B));
+     TEST(G.hasEdge(E, C));
+     TEST(G.hasEdge(E, D));
+     TEST(G.hasEdge(D, E));
+     TEST(!G.hasEdge(A, D));
+     TEST(!G.hasEdge(A, A));
+     TEST_EQUAL(G.getEdgeData(C, A), "Hello world");
+  
+     // The bread-first search should set values in the Vertex
+     // objects, such as d, pi and color (white, gray and black).
+     // You may want to use std::queue<Vertex*> for the queue.
+     G.bfs(A);
+     TEST_EQUAL(B->pi(), A);
+     TEST_EQUAL(C->pi(), A);
+     TEST_EQUAL(D->pi(), C);
+     TEST_EQUAL(E->pi(), C);
+     TEST_EQUAL(A->d(), 0);
+     TEST_EQUAL(B->d(), 1);
+     TEST_EQUAL(C->d(), 1);
+     TEST_EQUAL(D->d(), 2);
+     TEST_EQUAL(E->d(), 2);
+   
+     // // You are encouraged but not required to implement a
+     // // toDot() function for debugging purposes. The following
+     // // call to toDot() results in the following:
+     // //    graph G {
+     // //    A[label="A\nd = 0"]
+     // //    B[label="B\nd = 1"]
+     // //    C[label="C\nd = 1"]
+     // //    D[label="D\nd = 2"]
+     // //    E[label="E\nd = 2"]
+     // //      A -- C
+     // //      A -- B
+     // //      C -- D
+     // //      C -- E
+     // //      D -- E
+     // //    }
+     // cout << G.toDot() << endl;
    }
-  //   Vertex* D = G.addVertex("D");
-  //   Vertex* E = G.ensureVertex("E");
-  //   G.addEdge(A, C, "Hello world");
-  //   G.addEdge(D, C, "");
-  //   G.addEdge(E, C, "");
-  //   G.addEdge(E, D, "");
-  //   TEST(G.hasEdge(A, B));
-  //   TEST(G.hasEdge(E, C));
-  //   TEST(G.hasEdge(E, D));
-  //   TEST(G.hasEdge(D, E));
-  //   TEST(!G.hasEdge(A, D));
-  //   TEST(!G.hasEdge(A, A));
-  //   TEST_EQUAL(G.getEdgeData(C, A), "Hello world");
 
-  //   // The bread-first search should set values in the Vertex
-  //   // objects, such as d, pi and color (white, gray and black).
-  //   // You may want to use std::queue<Vertex*> for the queue.
-  //   G.bfs(A);
-  //   TEST_EQUAL(B->pi(), A);
-  //   TEST_EQUAL(C->pi(), A);
-  //   TEST_EQUAL(D->pi(), C);
-  //   TEST_EQUAL(E->pi(), C);
-  //   TEST_EQUAL(A->d(), 0);
-  //   TEST_EQUAL(B->d(), 1);
-  //   TEST_EQUAL(C->d(), 1);
-  //   TEST_EQUAL(D->d(), 2);
-  //   TEST_EQUAL(E->d(), 2);
+   {
+     // This function is declared but commented out in bacon.h.
+     // Implement it in bacon.cpp. See the comments in the
+     // skeleton function.
+     Graph G = buildBaconGraph("movies1deg.txt");
 
-  //   // // You are encouraged but not required to implement a
-  //   // // toDot() function for debugging purposes. The following
-  //   // // call to toDot() results in the following:
-  //   // //    graph G {
-  //   // //    A[label="A\nd = 0"]
-  //   // //    B[label="B\nd = 1"]
-  //   // //    C[label="C\nd = 1"]
-  //   // //    D[label="D\nd = 2"]
-  //   // //    E[label="E\nd = 2"]
-  //   // //      A -- C
-  //   // //      A -- B
-  //   // //      C -- D
-  //   // //      C -- E
-  //   // //      D -- E
-  //   // //    }
-  //   // cout << G.toDot() << endl;
-  // }
+     Vertex* kb = G.getVertex("Bacon, Kevin (I)");
+     Vertex* dm = G.getVertex("Moore, Demi");
+     Vertex* eh = G.getVertex("Hirsch, Emile");
+     Vertex* pw = G.getVertex("Weller, Peter (I)");
+     Vertex* vj = G.getVertex("Johnson, Van (I)");
+     Vertex* cc = G.getVertex("Charisse, Cyd");
+     G.bfs(kb);
+     // We only test the distance since the actual movies
+     // and actors can vary based on ordering of the bfs search.
+     TEST_EQUAL(dm->d(), 1);
+     // A possible edge, dm->edgeData(dm->pi()), might be
+     // A Few Good Men (1992).
+     TEST_EQUAL(eh->d(), 1);
+     // A possible edge, eh->edgeData(dm->pi()), might be
+     // The Air I Breathe (2007).
 
-  // {
-  //   // This function is declared but commented out in bacon.h.
-  //   // Implement it in bacon.cpp. See the comments in the
-  //   // skeleton function.
-  //   Graph G = buildBaconGraph("movies1deg.txt");
-
-  //   Vertex* kb = G.getVertex("Bacon, Kevin (I)");
-  //   Vertex* dm = G.getVertex("Moore, Demi");
-  //   Vertex* eh = G.getVertex("Hirsch, Emile");
-  //   Vertex* pw = G.getVertex("Weller, Peter (I)");
-  //   Vertex* vj = G.getVertex("Johnson, Van (I)");
-  //   Vertex* cc = G.getVertex("Charisse, Cyd");
-  //   G.bfs(kb);
-  //   // We only test the distance since the actual movies
-  //   // and actors can vary based on ordering of the bfs search.
-  //   TEST_EQUAL(dm->d(), 1);
-  //   // A possible edge, dm->edgeData(dm->pi()), might be
-  //   // A Few Good Men (1992).
-  //   TEST_EQUAL(eh->d(), 1);
-  //   // A possible edge, eh->edgeData(dm->pi()), might be
-  //   // The Air I Breathe (2007).
-
-  //   // The following actors have a bacon number of 2, so they won't
-  //   // be present in this dataset.
-  //   TEST_EQUAL(pw, NULL);
-  //   TEST_EQUAL(vj, NULL);
-  //   TEST_EQUAL(cc, NULL);
-  // }
+     // The following actors have a bacon number of 2, so they won't
+     // be present in this dataset.
+     TEST_EQUAL(pw, NULL);
+     TEST_EQUAL(vj, NULL);
+     TEST_EQUAL(cc, NULL);
+   }
 
   // {
   //   // This test will take longer than the others. Uncomment

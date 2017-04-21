@@ -21,8 +21,36 @@ class Vertex{
             return _name;
         }
 
+        Vertex* pi(){
+            return _pi;
+        }
+
+        int d(){
+            return _d;
+        }
+
+        std::string color(){
+            return _color;
+        }
+
+        void setColor(std::string color){
+            _color = color;
+        }
+
+        void setD(int d){
+            _d = d;
+        }
+
+        void setPi(Vertex* v){
+            _pi = v;
+        }
+
+
     private:
         std::string _name;
+        std::string _color;
+        int _d;
+        Vertex* _pi;
 
 
 };
@@ -38,6 +66,32 @@ class Neighbor{
         std::string edgeName;
 };
 
+class Edge{
+    public:
+        Edge(Vertex* start, Vertex* finish, std::string name){
+            _start = start;
+            _finish = finish;
+            _name = name;
+        }
+
+        Vertex* getStart(){
+            return _start;
+        }
+
+        Vertex* getFinish(){
+            return _finish;
+        }
+
+        std::string getName(){
+            return _name;
+        }
+
+    private:
+        Vertex* _start;
+        Vertex* _finish;
+        std::string _name;
+};
+
 class Graph{
     public:
         //Constructors
@@ -46,15 +100,75 @@ class Graph{
         }
 
         //Methods
+        void bfs(Vertex* initialVertex){
+
+            for(int i = 0; i < _vertices.size(); i++){
+                _vertices[i]->setColor("white");
+                _vertices[i]->setD(999);
+                _vertices[i]->setPi(NULL);
+            }
+
+            initialVertex->setColor("gray");
+            initialVertex->setD(0);
+            initialVertex->setPi(NULL);
+
+            std::queue<Vertex*> queue;
+
+            //TODO  while q = null
+
+
+        }
+
         void addEdge(Vertex* vOne, Vertex* vTwo, std::string name){
+//            Edge newEdge = new Edge(vOne, vTwo, name);
+            Edge newEdge(vOne, vTwo, name);
+            _edges.push_back(newEdge);
          
         }
 
         bool hasEdge(Vertex* vOne, Vertex* vTwo){
+            bool foundEdge = false;
+            
+            //Same point
+            if(vOne == vTwo){
+                return false;
+            }
+
+            for(int i = 0; i < _edges.size(); i++){
+                Vertex* first = _edges[i].getStart();
+                Vertex* second = _edges[i].getFinish();
+
+                if( (vOne == first || vOne == second) && (vTwo == first || vTwo == second) ){
+                    foundEdge = true;
+                }
+
+
+            }
+            return foundEdge;
 
         }
 
         std::string getEdgeData(Vertex* vOne, Vertex* vTwo){
+            bool foundEdge = false;
+            
+            //Same point
+            if(vOne == vTwo){
+                return "not found";
+            }
+
+            for(int i = 0; i < _edges.size(); i++){
+                Vertex* first = _edges[i].getStart();
+                Vertex* second = _edges[i].getFinish();
+
+                if( (vOne == first || vOne == second) && (vTwo == first || vTwo == second) ){
+                    return _edges[i].getName();
+                }
+
+
+            }
+
+            return "not found";
+
 
         }
 
@@ -101,6 +215,8 @@ class Graph{
 
         //list of vertex for adjacency list storing vertices with edges
         std::list<Vertex*> _adjacencylist;
+        std::vector<Neighbor> _neighbors;
+        std::vector<Edge> _edges;
         std::vector<Vertex*> _vertices;
         std::unordered_map<std::string, Vertex*> _key2vertex;
 };
