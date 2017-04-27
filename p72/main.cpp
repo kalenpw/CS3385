@@ -37,6 +37,7 @@ int runTests() {
 
    {
      //          0   1   2*  3  4   5
+       std::cout << "hello" << std::endl;
      int A[] = { 1, -4, 14, -2, 3, -1 };
      Result r = findMaxCrossingSubarray(A, 0, 2, 5);
      Result c(2, 4, 15);

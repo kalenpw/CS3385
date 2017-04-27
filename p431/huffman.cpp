@@ -81,7 +81,7 @@ string getHeader(int* freq) {
 }
 
 string compressData(const string& data) {
-
+    return " ";
     // TODO: Count the frequencies of the characters
     int freq[256];
     countFrequencies(data, freq);
@@ -120,6 +120,7 @@ string compressData(const string& data) {
 }
 
 string uncompressData(const string& data) {
+    return " ";
     // Read frequencies from the header
     std::stringstream ss(data);
     int count;
@@ -132,12 +133,9 @@ string uncompressData(const string& data) {
         ss >> c >> f;
         freq[c] = f;
     }
-    Node* tree = buildBinaryTree(freq);
 
-    // Write the header.
-    //std::stringstream ss;
-    ss << getHeader(freq);
-    
+    // TODO: build the binary tree
+
     bit_buffer buf(ss);
     std::stringstream out;
     // TODO: Use the binary tree to get the characters back from the buffer.
@@ -145,16 +143,7 @@ string uncompressData(const string& data) {
     // codewords to decompress the data.
     // Once you find the next character, add it to the output stream as
     //   out << c;
-    Node* currentNode;
-    currentNode = tree; 
-    for(int i = 0; i < data.size(); i++){
-        if(currentNode->data() == NULL){
 
-        }
-    }
-
-    
-//    return "1";
     return out.str();
 }
 

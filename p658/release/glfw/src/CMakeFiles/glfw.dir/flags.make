@@ -6,5 +6,5 @@ C_FLAGS = -fPIC   -Wall
 
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/home/kalenpw/Documents/School/2017Spring/CS3385/p658/glfw/include -I/home/kalenpw/Documents/School/2017Spring/CS3385/p658/glfw/src -I/home/kalenpw/Documents/School/2017Spring/CS3385/p658/release/glfw/src 
+C_INCLUDES = -I/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/glfw/include -I/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/glfw/src -I/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/glfw/src 
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/kalenpw/Documents/School/2017Spring/CS3385/p658/glfw/src
+# Install script for directory: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -52,8 +52,8 @@
 //
 // Note on implementing dijkstra(): for the priority queue,
 // consider using the following:
-//    auto cmp = [](Vertex* u, Vertex* v) { return u->d() > v->d(); };
-//    priority_queue<Vertex*, vector<Vertex*>, decltype(cmp)> Q(cmp);
+//      auto cmp = [](Vertex* u, Vertex* v) { return u->d() > v->d(); };
+//      priority_queue<Vertex*, vector<Vertex*>, decltype(cmp)> Q(cmp);
 // This uses lambda expressions to supply the "less than"
 // function to the priority queue.
 //
@@ -119,112 +119,112 @@ float wratio;
 Graph g;
 
 static void error_callback(int error, const char* description) {
-  fprintf(stderr, "Error: %s\n", description);
+    fprintf(stderr, "Error: %s\n", description);
 }
 
 static void key_callback(
-    GLFWwindow* window, int key, int scancode, int action, int mods) {
-  if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-    glfwSetWindowShouldClose(window, GLFW_TRUE);
+        GLFWwindow* window, int key, int scancode, int action, int mods) {
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
 Point win2obj(double xwin, double ywin) {
-  int width, height;
-  glfwGetFramebufferSize(window, &width, &height);
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
 
-  return Point(wratio*2*(xwin/(double)WIDTH)-wratio, 0-(2*(ywin/(double)HEIGHT)-1));
+    return Point(wratio*2*(xwin/(double)WIDTH)-wratio, 0-(2*(ywin/(double)HEIGHT)-1));
 }
 
 bool moving = false;
 void mouse_button_callback(
-    GLFWwindow* window, int button, int action, int mods) {
-  using namespace std;
-  if (action == GLFW_PRESS) {
-    double x, y;
-    glfwGetCursorPos(window, &x, &y);
-    Point p = win2obj(x, y);
-    if (mods & GLFW_MOD_CONTROL) {
-      g.mouseControlClick(p);
-    } else if (mods & GLFW_MOD_SHIFT) {
-      g.mouseShiftClick(p);
-    } else if (mods == 0) {
-      moving = true;
-      g.mouseDown(p);
+        GLFWwindow* window, int button, int action, int mods) {
+    using namespace std;
+    if (action == GLFW_PRESS) {
+        double x, y;
+        glfwGetCursorPos(window, &x, &y);
+        Point p = win2obj(x, y);
+        if (mods & GLFW_MOD_CONTROL) {
+            g.mouseControlClick(p);
+        } else if (mods & GLFW_MOD_SHIFT) {
+            g.mouseShiftClick(p);
+        } else if (mods == 0) {
+            moving = true;
+            g.mouseDown(p);
+        }
+    } else if (action == GLFW_RELEASE) {
+        moving = false;
     }
-  } else if (action == GLFW_RELEASE) {
-    moving = false;
-  }
 }
 
 void cursor_pos_callback(GLFWwindow* window, double x, double y) {
-  if (moving) {
-    Point p = win2obj(x, y);
-    g.mouseMoved(p);
-  }
+    if (moving) {
+        Point p = win2obj(x, y);
+        g.mouseMoved(p);
+    }
 }
 
 void render(FlatProgram& program) {
-  mat4x4 m, p, mvp;
+    mat4x4 m, p, mvp;
 
-  glClearColor(1, 1, 1, 0);
-  glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(1, 1, 1, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-  mat4x4_identity(m);
-  mat4x4_ortho(p, -wratio, wratio, -1.f, 1.f, 1.f, -1.f);
-  mat4x4_mul(mvp, p, m);
+    mat4x4_identity(m);
+    mat4x4_ortho(p, -wratio, wratio, -1.f, 1.f, 1.f, -1.f);
+    mat4x4_mul(mvp, p, m);
 
-  glUseProgram(program.program);
-  glUniformMatrix4fv(program.mvp_location, 1, GL_FALSE, (const GLfloat*) mvp);
+    glUseProgram(program.program);
+    glUniformMatrix4fv(program.mvp_location, 1, GL_FALSE, (const GLfloat*) mvp);
 
-  g.render(program, mvp);
+    g.render(program, mvp);
 }
 
 int main(void) {
-  using namespace std;
+    using namespace std;
 
-  glfwSetErrorCallback(error_callback);
+    glfwSetErrorCallback(error_callback);
 
-  if (!glfwInit())
-    exit(EXIT_FAILURE);
+    if (!glfwInit())
+        exit(EXIT_FAILURE);
 
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
-  window = glfwCreateWindow(WIDTH, HEIGHT, "Dijkstra", NULL, NULL);
-  if (!window) {
+    window = glfwCreateWindow(WIDTH, HEIGHT, "Dijkstra", NULL, NULL);
+    if (!window) {
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
+
+    glfwSetKeyCallback(window, key_callback);
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
+    glfwSetCursorPosCallback(window, cursor_pos_callback);
+
+    glfwMakeContextCurrent(window);
+    gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+    glfwSwapInterval(1);
+
+    Circle::instance();
+    Line::instance();
+
+    FlatProgram program;
+    initGraph(g);
+
+    while (!glfwWindowShouldClose(window)) {
+        int width, height;
+        glfwGetFramebufferSize(window, &width, &height);
+        wratio = width / (float) height;
+        glViewport(0, 0, width, height);
+
+        render(program);
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+
+    glfwDestroyWindow(window);
+
     glfwTerminate();
-    exit(EXIT_FAILURE);
-  }
-
-  glfwSetKeyCallback(window, key_callback);
-  glfwSetMouseButtonCallback(window, mouse_button_callback);
-  glfwSetCursorPosCallback(window, cursor_pos_callback);
-
-  glfwMakeContextCurrent(window);
-  gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-  glfwSwapInterval(1);
-
-  Circle::instance();
-  Line::instance();
-
-  FlatProgram program;
-  initGraph(g);
-
-  while (!glfwWindowShouldClose(window)) {
-    int width, height;
-    glfwGetFramebufferSize(window, &width, &height);
-    wratio = width / (float) height;
-    glViewport(0, 0, width, height);
-
-    render(program);
-
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-  }
-
-  glfwDestroyWindow(window);
-
-  glfwTerminate();
-  exit(EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
 }
 

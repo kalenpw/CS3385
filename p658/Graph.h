@@ -20,6 +20,8 @@ class Vertex {
         Vertex(std::string data, Point p){
             _data = data; 
             _point = p; 
+            _isStart = false;
+            _isFinish = false;
         }
 
         std::string data(){
@@ -34,12 +36,42 @@ class Vertex {
             return _d;
         }
 
-        std::string color(){
-            return _color;
+
+        Point getPoint(){
+            return _point;
         }
 
-        void setColor(std::string color){
-            _color = color;
+
+        Color getColor(){
+            if(_isStart){ 
+                //R G B
+                setColor(1,0,0);
+            }
+            if(_isFinish){
+                setColor(0,0,1);
+            }
+            return _vertexColor;
+        }
+
+        bool getIsStart(){
+            return _isStart;
+        }
+        bool getIsFinish(){
+            return _isFinish;
+        }
+
+        void setIsStartNode(bool boolean){
+            _isStart = boolean;
+        }
+
+        void setIsFinishNode(bool b){
+            _isFinish = b;
+        }
+
+            
+        void setColor(int r, int g, int b){
+            Color newColor = Color(r, g, b);
+            _vertexColor = newColor;
         }
 
         void setD(int d){
@@ -51,10 +83,13 @@ class Vertex {
         }
 
 
+
     private:
+        bool _isStart;
+        bool _isFinish;
         Point _point;
         std::string _data;
-        std::string _color;
+        Color _vertexColor = Color(0,0,0);
         int _d;
         Vertex* _pi;
 };
@@ -91,11 +126,13 @@ class Graph {
 
   void mouseDown(const Point& p);
   void mouseShiftClick(const Point& p);
-  void mouseControlClick(const Point& p);
-  void mouseMoved(const Point& p);
+  void mouseControlClick(const Point& p); void mouseMoved(const Point& p);
 
   Vertex* addVertex(const std::string& data, const Point& p);
   void addEdge(Vertex* u, Vertex* v, const std::string& data);
+
+  Vertex* getStartNode();
+  Vertex* getFinishNode();
 
  private:
   std::unordered_map<std::string, Vertex*> _key2vertex;

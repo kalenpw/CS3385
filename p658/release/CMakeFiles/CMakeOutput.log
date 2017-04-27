@@ -679,3 +679,130 @@ Linking C executable cmTC_5e6d6
 make[1]: Leaving directory '/home/kalenpw/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
 
 
+Performing C++ SOURCE FILE Test COMPILER_SUPPORTS_CXX11 succeeded with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_98c37/fast"
+/usr/bin/make -f CMakeFiles/cmTC_98c37.dir/build.make CMakeFiles/cmTC_98c37.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_98c37.dir/src.cxx.o
+/usr/bin/c++     -DCOMPILER_SUPPORTS_CXX11   -std=c++11 -o CMakeFiles/cmTC_98c37.dir/src.cxx.o -c /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_98c37
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_98c37.dir/link.txt --verbose=1
+/usr/bin/c++    -DCOMPILER_SUPPORTS_CXX11    CMakeFiles/cmTC_98c37.dir/src.cxx.o  -o cmTC_98c37 -rdynamic 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0; }
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_17e8a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_17e8a.dir/build.make CMakeFiles/cmTC_17e8a.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_17e8a.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_17e8a.dir/CheckIncludeFile.c.o   -c /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_17e8a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17e8a.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_17e8a.dir/CheckIncludeFile.c.o  -o cmTC_17e8a -rdynamic 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_55953/fast"
+/usr/bin/make -f CMakeFiles/cmTC_55953.dir/build.make CMakeFiles/cmTC_55953.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_55953.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_55953.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_55953
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_55953.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_55953.dir/CheckFunctionExists.c.o  -o cmTC_55953 -rdynamic -lpthread 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+
+Determining if the function XOpenDisplay exists in the /usr/lib/x86_64-linux-gnu/libX11.so passed with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1106f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1106f.dir/build.make CMakeFiles/cmTC_1106f.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1106f.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTC_1106f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1106f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1106f.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay    CMakeFiles/cmTC_1106f.dir/CheckFunctionExists.c.o  -o cmTC_1106f -rdynamic /usr/lib/x86_64-linux-gnu/libX11.so 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3a3e8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3a3e8.dir/build.make CMakeFiles/cmTC_3a3e8.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3a3e8.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTC_3a3e8.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3a3e8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3a3e8.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname    CMakeFiles/cmTC_3a3e8.dir/CheckFunctionExists.c.o  -o cmTC_3a3e8 -rdynamic 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fdbd7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fdbd7.dir/build.make CMakeFiles/cmTC_fdbd7.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fdbd7.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTC_fdbd7.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_fdbd7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fdbd7.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect    CMakeFiles/cmTC_fdbd7.dir/CheckFunctionExists.c.o  -o cmTC_fdbd7 -rdynamic 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_18b7a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_18b7a.dir/build.make CMakeFiles/cmTC_18b7a.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_18b7a.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTC_18b7a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_18b7a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18b7a.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove    CMakeFiles/cmTC_18b7a.dir/CheckFunctionExists.c.o  -o cmTC_18b7a -rdynamic 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a4640/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a4640.dir/build.make CMakeFiles/cmTC_a4640.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a4640.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTC_a4640.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a4640
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a4640.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat    CMakeFiles/cmTC_a4640.dir/CheckFunctionExists.c.o  -o cmTC_a4640 -rdynamic 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_addf9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_addf9.dir/build.make CMakeFiles/cmTC_addf9.dir/build
+make[1]: Entering directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_addf9.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTC_addf9.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_addf9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_addf9.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    CMakeFiles/cmTC_addf9.dir/CheckFunctionExists.c.o  -o cmTC_addf9 -rdynamic -lICE 
+make[1]: Leaving directory '/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/CMakeFiles/CMakeTmp'
+
+

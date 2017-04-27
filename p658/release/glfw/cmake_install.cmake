@@ -1,4 +1,4 @@
-# Install script for directory: /home/kalenpw/Documents/School/2017Spring/CS3385/p658/glfw
+# Install script for directory: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/glfw
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/kalenpw/Documents/School/2017Spring/CS3385/p658/release/glfw/src/cmake_install.cmake")
+  include("/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/glfw/src/cmake_install.cmake")
 
 endif()
 

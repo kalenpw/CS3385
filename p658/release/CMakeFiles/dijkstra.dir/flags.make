@@ -7,11 +7,11 @@ C_FLAGS =
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/kalenpw/Documents/School/2017Spring/CS3385/p658/glfw/deps -I/home/kalenpw/Documents/School/2017Spring/CS3385/p658/glfw/include 
+C_INCLUDES = -I/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/glfw/deps -I/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/glfw/include 
 
 CXX_FLAGS =  -std=c++11  
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/kalenpw/Documents/School/2017Spring/CS3385/p658/glfw/deps -I/home/kalenpw/Documents/School/2017Spring/CS3385/p658/glfw/include 
+CXX_INCLUDES = -I/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/glfw/deps -I/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/glfw/include 
 

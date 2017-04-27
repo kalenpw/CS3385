@@ -1,4 +1,4 @@
-# Install script for directory: /home/kalenpw/Documents/School/2017Spring/CS3385/p658
+# Install script for directory: /media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/kalenpw/Documents/School/2017Spring/CS3385/p658/release/glfw/cmake_install.cmake")
+  include("/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/glfw/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/kalenpw/Documents/School/2017Spring/CS3385/p658/release/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/media/kalenpw/HDD/Documents/School/2017Spring/CS3385/p658/release/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
