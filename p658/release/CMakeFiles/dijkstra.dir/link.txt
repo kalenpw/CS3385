@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/dijkstra.dir/main.cpp.o CMakeFiles/dijkstra.dir/Graph.cpp.o CMakeFiles/dijkstra.dir/glfw/deps/glad.c.o  -o dijkstra -rdynamic glfw/src/libglfw3.a -lrt -lm -ldl -lX11 -lpthread -lXrandr -lXinerama -lXxf86vm -lXcursor 

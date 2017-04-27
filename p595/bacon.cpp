@@ -34,12 +34,19 @@ Graph buildBaconGraph(const string& filename) {
            cout << v->data() << endl;
            G.addVertex(movies[i].actors[j]);
            //G.addVertex(v->data());
+//           if(v->data() == "Hirsch, Emile"){
+//                std::cout << "added emile" << std::endl;
+//           }
+
 
 
 
         }
 
       }
+      std::cout << " here " << std::endl;
+
+      return G;
       
  }
 

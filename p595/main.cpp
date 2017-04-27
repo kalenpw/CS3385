@@ -188,13 +188,15 @@ int runTests() {
      // Implement it in bacon.cpp. See the comments in the
      // skeleton function.
      Graph G = buildBaconGraph("movies1deg.txt");
-
+        std::cout << " asdf asdf asdf " << std::endl;
      Vertex* kb = G.getVertex("Bacon, Kevin (I)");
+        std::cout << " 1 2 3 4 5 " << std::endl;
      Vertex* dm = G.getVertex("Moore, Demi");
      Vertex* eh = G.getVertex("Hirsch, Emile");
      Vertex* pw = G.getVertex("Weller, Peter (I)");
      Vertex* vj = G.getVertex("Johnson, Van (I)");
      Vertex* cc = G.getVertex("Charisse, Cyd");
+   
      G.bfs(kb);
      // We only test the distance since the actual movies
      // and actors can vary based on ordering of the bfs search.
@@ -212,25 +214,25 @@ int runTests() {
      TEST_EQUAL(cc, NULL);
    }
 
-  // {
-  //   // This test will take longer than the others. Uncomment
-  //   // it once everything else is working.
-  //   Graph G = buildBaconGraph("movies2deg.txt");
+   {
+     // This test will take longer than the others. Uncomment
+     // it once everything else is working.
+     Graph G = buildBaconGraph("movies2deg.txt");
 
-  //   Vertex* kb = G.getVertex("Bacon, Kevin (I)");
-  //   Vertex* dm = G.getVertex("Moore, Demi");
-  //   Vertex* eh = G.getVertex("Hirsch, Emile");
-  //   Vertex* pw = G.getVertex("Weller, Peter (I)");
-  //   Vertex* vj = G.getVertex("Johnson, Van (I)");
-  //   Vertex* cc = G.getVertex("Charisse, Cyd");
-  //   G.bfs(kb);
+     Vertex* kb = G.getVertex("Bacon, Kevin (I)");
+     Vertex* dm = G.getVertex("Moore, Demi");
+     Vertex* eh = G.getVertex("Hirsch, Emile");
+     Vertex* pw = G.getVertex("Weller, Peter (I)");
+     Vertex* vj = G.getVertex("Johnson, Van (I)");
+     Vertex* cc = G.getVertex("Charisse, Cyd");
+     G.bfs(kb);
 
-  //   TEST_EQUAL(dm->d(), 1);
-  //   TEST_EQUAL(eh->d(), 1);
-  //   TEST_EQUAL(pw->d(), 2);
-  //   TEST_EQUAL(vj->d(), 2);
-  //   TEST_EQUAL(cc->d(), 2);
-  // }
+     TEST_EQUAL(dm->d(), 1);
+     TEST_EQUAL(eh->d(), 1);
+     TEST_EQUAL(pw->d(), 2);
+     TEST_EQUAL(vj->d(), 2);
+     TEST_EQUAL(cc->d(), 2);
+   }
 
   const int numSuccesses = testNum - numFails;
   cout << numSuccesses << "/" << testNum << " tests succeeded" << endl;

@@ -15,6 +15,7 @@ class Vertex{
     public:
         Vertex(std::string name){
             _name = name; 
+            _d = 1;
         }
 
         std::string data(){
@@ -174,19 +175,22 @@ class Graph{
 
         Vertex* addVertex(std::string vertexName){
             Vertex* v = new Vertex(vertexName);
-            //add to _key2vertex
             _vertices.push_back(v);
             _key2vertex[vertexName] = v;
         }
         
         Vertex* getVertex(std::string name){
+            std::cout << "Finding vertex: " << name << std::endl;
             bool exists = (!(_key2vertex.find(name) == _key2vertex.end()));
             if(exists){
                 Vertex* foundVertex = _key2vertex[name];
                 return foundVertex;
             }
             else{
+                //Return dummy Vertex
+                Vertex* notFound = new Vertex("Not found");
                 std::cout << "No such vertext found " << name << std::endl;
+                return notFound;
             }
 
         }
@@ -214,7 +218,7 @@ class Graph{
     private:
 
         //list of vertex for adjacency list storing vertices with edges
-        std::list<Vertex*> _adjacencylist;
+        //std::list<Vertex*> _adjacencylist;
         std::vector<Neighbor> _neighbors;
         std::vector<Edge> _edges;
         std::vector<Vertex*> _vertices;
